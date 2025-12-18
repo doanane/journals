@@ -1,3 +1,4 @@
+
 .comments-section {
   margin-top: 3rem;
   padding-top: 2rem;
@@ -41,6 +42,11 @@
   border-color: var(--primary-color);
 }
 
+.comment-name-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .comment-text-input {
   width: 100%;
   padding: 1rem;
@@ -58,6 +64,11 @@
 .comment-text-input:focus {
   outline: none;
   border-color: var(--primary-color);
+}
+
+.comment-text-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .comment-form-footer {
@@ -85,17 +96,19 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
 .comment-submit-btn:hover:not(:disabled) {
   background: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
 .comment-submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .comments-list {
@@ -109,12 +122,11 @@
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.5rem;
-  position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .comment-card:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -131,13 +143,13 @@
   align-items: flex-start;
   gap: 0.75rem;
   flex: 1;
-  min-width: 0; /* Allow text truncation */
+  min-width: 0;
 }
 
 .comment-avatar {
   width: 40px;
   height: 40px;
-  min-width: 40px; /* Prevent shrinking */
+  min-width: 40px;
   background: var(--primary-color);
   color: white;
   border-radius: 50%;
@@ -150,7 +162,7 @@
 
 .comment-user-details {
   flex: 1;
-  min-width: 0; /* Allow text truncation */
+  min-width: 0;
 }
 
 .comment-username {
@@ -158,9 +170,19 @@
   color: var(--heading-color);
   margin-bottom: 0.25rem;
   font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.you-badge {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .comment-time {
@@ -182,13 +204,19 @@
   transition: all 0.2s ease;
   font-size: 0.9rem;
   white-space: nowrap;
-  flex-shrink: 0; /* Prevent button from shrinking */
+  flex-shrink: 0;
 }
 
-.comment-like-btn:hover {
+.comment-like-btn:hover:not(:disabled) {
   background: var(--primary-light);
   border-color: var(--primary-color);
   color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.comment-like-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .comment-like-btn.liked {
@@ -208,7 +236,7 @@
 }
 
 .like-count {
-  font-weight: 500;
+  font-weight: 600;
   min-width: 20px;
   text-align: center;
 }
@@ -217,20 +245,7 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text-color);
-  margin-bottom: 0.5rem;
   word-break: break-word;
-}
-
-.comment-badge {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: var(--primary-light);
-  color: var(--primary-color);
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
 }
 
 .no-comments {
@@ -247,7 +262,7 @@
   margin: 0;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 640px) {
   .comment-header {
     flex-direction: column;
@@ -269,5 +284,67 @@
   
   .comment-submit-btn {
     width: 100%;
+  }
+}
+
+
+
+.error-message {
+  background-color: #fff5f5;
+  border: 1px solid #fc8181;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #c53030;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: #c53030;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  line-height: 1;
+}
+
+.error-close:hover {
+  color: #9b2c2c;
+}
+
+.char-counter {
+  font-size: 0.85rem;
+  color: var(--meta-color);
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,6 +1,6 @@
-// src/services/firebase.js - UPDATE THIS FILE
+// src/services/firebase.js - UPDATE THIS COMPLETELY
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, get, set, update, onValue } from 'firebase/database';
+import { getDatabase, ref, get, set, update, onValue, push } from 'firebase/database';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -19,21 +19,28 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // Get or create user ID
-const getUserId = () => {
+export const getUserId = () => {
   let userId = localStorage.getItem('blog_user_id');
   if (!userId) {
-    userId = 'user_' + Date.now();
+    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     localStorage.setItem('blog_user_id', userId);
   }
   return userId;
 };
 
-// Reactions functions (keep existing)
+// ========== REACTIONS ==========
 export const getReactions = async (postId) => {
   try {
     const snapshot = await get(ref(database, `reactions/${postId}`));
     if (snapshot.exists()) {
-      return snapshot.val();
+      const data = snapshot.val();
+      return {
+        like: data.like || 0,
+        love: data.love || 0,
+        smile: data.smile || 0,
+        think: data.think || 0,
+        clap: data.clap || 0
+      };
     }
   } catch (error) {
     console.error('Error getting reactions:', error);
@@ -87,27 +94,33 @@ export const subscribeToReactions = (postId, callback) => {
   const reactionsRef = ref(database, `reactions/${postId}`);
   return onValue(reactionsRef, (snapshot) => {
     if (snapshot.exists()) {
-      callback(snapshot.val());
+      const data = snapshot.val();
+      callback({
+        like: data.like || 0,
+        love: data.love || 0,
+        smile: data.smile || 0,
+        think: data.think || 0,
+        clap: data.clap || 0
+      });
     } else {
       callback({ like: 0, love: 0, smile: 0, think: 0, clap: 0 });
     }
   });
 };
 
-// Comments functions - UPDATED
+// ========== COMMENTS ==========
 export const getComments = async (postId) => {
   try {
     const snapshot = await get(ref(database, `comments/${postId}`));
     if (snapshot.exists()) {
       const comments = snapshot.val();
-      // Convert object to array and sort by timestamp (newest first)
       const commentsArray = Object.keys(comments).map(key => ({
         id: key,
         ...comments[key],
-        // Ensure likedBy exists
         likedBy: comments[key].likedBy || {}
       }));
       
+      // Sort by timestamp (newest first)
       return commentsArray.sort((a, b) => 
         new Date(b.timestamp) - new Date(a.timestamp)
       );
@@ -120,24 +133,41 @@ export const getComments = async (postId) => {
 
 export const addComment = async (postId, commentData) => {
   try {
+    console.log('Adding comment to post:', postId, commentData);
+    
     const userId = getUserId();
     const commentsRef = ref(database, `comments/${postId}`);
-    const newCommentRef = ref(commentsRef, Date.now().toString());
+    
+    // Use push() to generate a unique key
+    const newCommentRef = push(commentsRef);
+    const commentId = newCommentRef.key;
     
     const comment = {
       userId: userId,
       username: commentData.username || 'Anonymous',
-      text: commentData.text,
+      text: commentData.text.trim(),
       timestamp: new Date().toISOString(),
       likes: 0,
-      likedBy: {} // Initialize empty likedBy object
+      likedBy: {}
     };
     
+    console.log('Comment to save:', comment);
+    
+    // Save the comment
     await set(newCommentRef, comment);
-    console.log('✅ Comment added to Firebase');
+    
+    console.log('✅ Comment saved successfully with ID:', commentId);
+    
+    // Return the updated comments list
     return await getComments(postId);
+    
   } catch (error) {
-    console.error('Error adding comment:', error);
+    console.error('❌ Error adding comment:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      name: error.name
+    });
     throw error;
   }
 };
@@ -149,13 +179,13 @@ export const toggleCommentLike = async (postId, commentId) => {
     const snapshot = await get(commentRef);
     
     if (!snapshot.exists()) {
-      console.log('Comment not found');
-      return;
+      console.log('Comment not found:', commentId);
+      return false;
     }
     
     const comment = snapshot.val();
     const likedBy = comment.likedBy || {};
-    const hasLiked = likedBy[userId];
+    const hasLiked = likedBy[userId] === true;
     
     const updates = {};
     
@@ -170,8 +200,9 @@ export const toggleCommentLike = async (postId, commentId) => {
     }
     
     await update(ref(database), updates);
-    console.log('✅ Comment like toggled');
+    console.log('✅ Comment like toggled:', !hasLiked);
     return !hasLiked; // Return new like state
+    
   } catch (error) {
     console.error('Error toggling comment like:', error);
     throw error;
@@ -182,7 +213,7 @@ export const hasUserLikedComment = async (postId, commentId) => {
   try {
     const userId = getUserId();
     const snapshot = await get(ref(database, `comments/${postId}/${commentId}/likedBy/${userId}`));
-    return snapshot.exists();
+    return snapshot.exists() && snapshot.val() === true;
   } catch (error) {
     console.error('Error checking comment like:', error);
     return false;
@@ -191,36 +222,49 @@ export const hasUserLikedComment = async (postId, commentId) => {
 
 export const subscribeToComments = (postId, callback) => {
   const commentsRef = ref(database, `comments/${postId}`);
+  
   return onValue(commentsRef, (snapshot) => {
-    if (snapshot.exists()) {
-      const comments = snapshot.val();
-      // Convert object to array and sort by timestamp
-      const commentsArray = Object.keys(comments).map(key => ({
-        id: key,
-        ...comments[key],
-        likedBy: comments[key].likedBy || {}
-      }));
-      
-      commentsArray.sort((a, b) => 
-        new Date(b.timestamp) - new Date(a.timestamp)
-      );
-      
-      callback(commentsArray);
-    } else {
+    try {
+      if (snapshot.exists()) {
+        const comments = snapshot.val();
+        const commentsArray = Object.keys(comments).map(key => ({
+          id: key,
+          ...comments[key],
+          likedBy: comments[key].likedBy || {}
+        }));
+        
+        commentsArray.sort((a, b) => 
+          new Date(b.timestamp) - new Date(a.timestamp)
+        );
+        
+        callback(commentsArray);
+      } else {
+        callback([]);
+      }
+    } catch (error) {
+      console.error('Error processing comments:', error);
       callback([]);
     }
   });
 };
 
 // Test function
-export const testFirebase = async () => {
+export const testFirebaseConnection = async () => {
   console.log('Testing Firebase connection...');
+  
   try {
-    const testReaction = await setReaction('test', 'like');
-    console.log('Firebase test successful:', testReaction);
+    // Test database connection
+    const testRef = ref(database, 'test');
+    await set(testRef, { test: 'connection', timestamp: new Date().toISOString() });
+    console.log('✅ Firebase write test passed');
+    
+    // Test reading back
+    const snapshot = await get(testRef);
+    console.log('✅ Firebase read test passed:', snapshot.val());
+    
     return true;
   } catch (error) {
-    console.error('Firebase test failed:', error);
+    console.error('❌ Firebase test failed:', error);
     return false;
   }
 };

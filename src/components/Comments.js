@@ -1,6 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
+// src/components/Comments.js - UPDATED VERSION
+import React, { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
-import { dataService } from '../services/dataService';
+import { 
+  getComments, 
+  addComment, 
+  subscribeToComments, 
+  toggleCommentLike, 
+  hasUserLikedComment,
+  getUserId,
+  testFirebaseConnection
+} from '../services/firebase';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import './Comments.css';
 
@@ -9,48 +18,134 @@ function Comments({ postId }) {
   const [newComment, setNewComment] = useState('');
   const [username, setUsername] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [commentLikes, setCommentLikes] = useState({});
+  const [error, setError] = useState('');
 
-  const loadComments = useCallback(() => {
-    const loadedComments = dataService.getComments(postId);
-    console.log('Loaded comments:', loadedComments);
-    setComments(loadedComments);
-  }, [postId]);
+  // Test Firebase connection on component mount
+  useEffect(() => {
+    const testConnection = async () => {
+      const isConnected = await testFirebaseConnection();
+      if (!isConnected) {
+        setError('Cannot connect to database. Please check your internet connection.');
+      }
+    };
+    
+    testConnection();
+  }, []);
 
   useEffect(() => {
-    loadComments();
-    
-    const unsubscribe = dataService.subscribe(loadComments);
-    
-    return () => {
-      if (unsubscribe) unsubscribe();
+    // Load initial comments
+    const loadComments = async () => {
+      try {
+        console.log('Loading comments for post:', postId);
+        const commentsData = await getComments(postId);
+        console.log('Loaded comments:', commentsData);
+        setComments(commentsData);
+        
+        // Check like status for each comment
+        const likeStatus = {};
+        for (const comment of commentsData) {
+          const hasLiked = await hasUserLikedComment(postId, comment.id);
+          likeStatus[comment.id] = hasLiked;
+        }
+        setCommentLikes(likeStatus);
+        setError('');
+      } catch (error) {
+        console.error('Error loading comments:', error);
+        setError('Failed to load comments. Please refresh the page.');
+      }
     };
-  }, [loadComments]);
+
+    loadComments();
+
+    // Subscribe to real-time updates
+    const unsubscribe = subscribeToComments(postId, (newComments) => {
+      console.log('Real-time comments update:', newComments);
+      setComments(newComments);
+    });
+
+    return unsubscribe;
+  }, [postId]);
 
   const handleSubmitComment = async (e) => {
     e.preventDefault();
-    if (!newComment.trim()) return;
+    
+    // Validation
+    const commentText = newComment.trim();
+    if (!commentText || submitting) return;
+    
+    if (commentText.length > 1000) {
+      setError('Comment is too long (max 1000 characters)');
+      return;
+    }
     
     setSubmitting(true);
+    setError('');
     
     try {
-      console.log('Submitting comment for post:', postId);
-      dataService.addComment(postId, {
-        text: newComment.trim(),
-        username: username.trim() || 'Anonymous'
-      });
+      console.log('Submitting comment:', { postId, text: commentText, username });
       
+      const commentData = {
+        text: commentText,
+        username: username.trim() || 'Anonymous'
+      };
+      
+      await addComment(postId, commentData);
+      
+      // Clear form on success
       setNewComment('');
       setUsername('');
+      
+      console.log('✅ Comment submitted successfully');
+      
     } catch (error) {
-      console.error('Error submitting comment:', error);
+      console.error('❌ Error submitting comment:', error);
+      
+      // User-friendly error messages
+      let errorMessage = 'Failed to post comment. ';
+      
+      if (error.message.includes('permission')) {
+        errorMessage += 'Please check Firebase database rules.';
+      } else if (error.message.includes('network')) {
+        errorMessage += 'Please check your internet connection.';
+      } else {
+        errorMessage += 'Please try again.';
+      }
+      
+      setError(errorMessage);
+      
     } finally {
       setSubmitting(false);
     }
   };
 
-  const handleLikeComment = (commentId) => {
-    console.log('Liking comment:', commentId);
-    dataService.toggleCommentLike(postId, commentId);
+  const handleLikeComment = async (commentId) => {
+    try {
+      console.log('Toggling like for comment:', commentId);
+      const newLikeState = await toggleCommentLike(postId, commentId);
+      
+      // Update local state immediately for better UX
+      setComments(prevComments => 
+        prevComments.map(comment => {
+          if (comment.id === commentId) {
+            return {
+              ...comment,
+              likes: newLikeState ? (comment.likes || 0) + 1 : Math.max(0, (comment.likes || 0) - 1)
+            };
+          }
+          return comment;
+        })
+      );
+      
+      setCommentLikes(prev => ({
+        ...prev,
+        [commentId]: newLikeState
+      }));
+      
+    } catch (error) {
+      console.error('Error liking comment:', error);
+      setError('Failed to like comment. Please try again.');
+    }
   };
 
   const formatTime = (timestamp) => {
@@ -70,15 +165,25 @@ function Comments({ postId }) {
     }
   };
 
-  const hasUserLikedComment = (commentId) => {
-    return dataService.hasUserLikedComment(postId, commentId);
-  };
-
   return (
     <div className="comments-section" id="comments">
       <h3 className="comments-title">
         Comments ({comments.length})
       </h3>
+      
+      {/* Error Message */}
+      {error && (
+        <div className="error-message">
+          ⚠️ {error}
+          <button 
+            onClick={() => setError('')}
+            className="error-close"
+            aria-label="Close error"
+          >
+            ×
+          </button>
+        </div>
+      )}
       
       <form onSubmit={handleSubmitComment} className="comment-form">
         <div className="comment-input-group">
@@ -89,6 +194,7 @@ function Comments({ postId }) {
             placeholder="Your name (optional)"
             className="comment-name-input"
             maxLength="50"
+            disabled={submitting}
           />
           <textarea
             value={newComment}
@@ -98,18 +204,27 @@ function Comments({ postId }) {
             rows="3"
             required
             maxLength="1000"
+            disabled={submitting}
           />
+          <div className="char-counter">
+            {newComment.length}/1000 characters
+          </div>
         </div>
         <div className="comment-form-footer">
           <div className="comment-hint">
-            Share your perspective. Be kind and thoughtful.
+            {submitting ? 'Posting your comment...' : 'Share your perspective. Be kind and thoughtful.'}
           </div>
           <button 
             type="submit" 
             className="comment-submit-btn"
             disabled={submitting || !newComment.trim()}
           >
-            {submitting ? 'Posting...' : 'Post Comment'}
+            {submitting ? (
+              <>
+                <span className="spinner"></span>
+                Posting...
+              </>
+            ) : 'Post Comment'}
           </button>
         </div>
       </form>
@@ -117,7 +232,9 @@ function Comments({ postId }) {
       <div className="comments-list">
         {comments.length > 0 ? (
           comments.map(comment => {
-            const userLiked = hasUserLikedComment(comment.id);
+            const userLiked = commentLikes[comment.id] || false;
+            const currentUserId = getUserId();
+            const isCurrentUser = comment.userId === currentUserId;
             
             return (
               <div key={comment.id} className="comment-card">
@@ -129,16 +246,19 @@ function Comments({ postId }) {
                     <div className="comment-user-details">
                       <div className="comment-username">
                         {comment.username}
+                        {isCurrentUser && <span className="you-badge"> (You)</span>}
                       </div>
                       <time className="comment-time">
                         {formatTime(comment.timestamp)}
                       </time>
                     </div>
                   </div>
+                  
                   <button
                     onClick={() => handleLikeComment(comment.id)}
                     className={`comment-like-btn ${userLiked ? 'liked' : ''}`}
                     title={userLiked ? 'Unlike this comment' : 'Like this comment'}
+                    disabled={submitting}
                   >
                     <ThumbUpIcon className="like-icon" />
                     <span className="like-count">{comment.likes || 0}</span>
@@ -148,12 +268,6 @@ function Comments({ postId }) {
                 <div className="comment-content">
                   {comment.text}
                 </div>
-                
-                {comment.userId === dataService.getUserId() && (
-                  <div className="comment-badge">
-                    You
-                  </div>
-                )}
               </div>
             );
           })
