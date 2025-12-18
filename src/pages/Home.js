@@ -1,4 +1,4 @@
-// src/pages/Home.js
+
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import BlogCard from '../components/BlogCard';
@@ -12,7 +12,6 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       setFilteredPosts(blogPosts);
       setIsLoading(false);

@@ -13,6 +13,7 @@
     "axios": "^1.13.2",
     "concurrently": "^9.2.1",
     "date-fns": "^4.1.0",
+    "firebase": "^12.7.0",
     "framer-motion": "^12.23.26",
     "json-server": "^1.0.0-beta.3",
     "lucide-react": "^0.561.0",
@@ -25,8 +26,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "json-server --watch db.json --port 3001",
-    "dev": "concurrently \"npm start\" \"npm run server\""
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [

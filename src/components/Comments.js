@@ -1,7 +1,5 @@
-// src/components/Comments.js
 import React, { useState, useEffect, useCallback } from 'react';
 import { format, parseISO } from 'date-fns';
-import { useUser } from '../context/UserContext';
 import { dataService } from '../services/dataService';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import './Comments.css';
@@ -11,28 +9,21 @@ function Comments({ postId }) {
   const [newComment, setNewComment] = useState('');
   const [username, setUsername] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const { userId, addComment, getUserComments } = useUser();
 
   const loadComments = useCallback(() => {
-    // Get comments from data service
-    const serviceComments = dataService.getComments(postId);
-    
-    // Get user's saved comments
-    const userComments = getUserComments(postId) || [];
-    
-    // Combine and deduplicate comments
-    const allComments = [...serviceComments, ...userComments].filter((comment, index, self) =>
-      index === self.findIndex(c => c.id === comment.id)
-    );
-    
-    // Sort by timestamp (newest first)
-    allComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    
-    setComments(allComments);
-  }, [postId, getUserComments]);
+    const loadedComments = dataService.getComments(postId);
+    console.log('Loaded comments:', loadedComments);
+    setComments(loadedComments);
+  }, [postId]);
 
   useEffect(() => {
     loadComments();
+    
+    const unsubscribe = dataService.subscribe(loadComments);
+    
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, [loadComments]);
 
   const handleSubmitComment = async (e) => {
@@ -42,29 +33,14 @@ function Comments({ postId }) {
     setSubmitting(true);
     
     try {
-      const commentData = {
+      console.log('Submitting comment for post:', postId);
+      dataService.addComment(postId, {
         text: newComment.trim(),
-        username: username.trim() || 'Anonymous',
-        userId
-      };
-      
-      // Add to data service (persistent storage)
-      dataService.addComment(postId, commentData);
-      
-      // Add to user context (session storage)
-      addComment(postId, {
-        ...commentData,
-        id: Date.now(),
-        timestamp: new Date().toISOString(),
-        likes: 0
+        username: username.trim() || 'Anonymous'
       });
       
-      // Clear form
       setNewComment('');
       setUsername('');
-      
-      // Reload comments
-      loadComments();
     } catch (error) {
       console.error('Error submitting comment:', error);
     } finally {
@@ -73,22 +49,29 @@ function Comments({ postId }) {
   };
 
   const handleLikeComment = (commentId) => {
-    dataService.likeComment(postId, commentId);
-    loadComments();
+    console.log('Liking comment:', commentId);
+    dataService.toggleCommentLike(postId, commentId);
   };
 
   const formatTime = (timestamp) => {
-    const date = parseISO(timestamp);
-    const now = new Date();
-    const diffInHours = Math.abs(now - date) / 36e5;
-    
-    if (diffInHours < 1) {
-      return 'Just now';
-    } else if (diffInHours < 24) {
-      return `${Math.floor(diffInHours)}h ago`;
-    } else {
+    try {
+      const date = parseISO(timestamp);
+      const now = new Date();
+      const diffInSeconds = Math.floor((now - date) / 1000);
+      
+      if (diffInSeconds < 60) return 'Just now';
+      if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+      if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+      if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+      
       return format(date, 'MMM dd, yyyy');
+    } catch (error) {
+      return 'Recently';
     }
+  };
+
+  const hasUserLikedComment = (commentId) => {
+    return dataService.hasUserLikedComment(postId, commentId);
   };
 
   return (
@@ -133,43 +116,47 @@ function Comments({ postId }) {
       
       <div className="comments-list">
         {comments.length > 0 ? (
-          comments.map(comment => (
-            <div key={comment.id} className="comment-card">
-              <div className="comment-header">
-                <div className="comment-user">
-                  <div className="comment-avatar">
-                    {comment.username.charAt(0).toUpperCase()}
-                  </div>
-                  <div>
-                    <div className="comment-username">
-                      {comment.username}
+          comments.map(comment => {
+            const userLiked = hasUserLikedComment(comment.id);
+            
+            return (
+              <div key={comment.id} className="comment-card">
+                <div className="comment-header">
+                  <div className="comment-user-info">
+                    <div className="comment-avatar">
+                      {comment.username.charAt(0).toUpperCase()}
                     </div>
-                    <time className="comment-time">
-                      {formatTime(comment.timestamp)}
-                    </time>
+                    <div className="comment-user-details">
+                      <div className="comment-username">
+                        {comment.username}
+                      </div>
+                      <time className="comment-time">
+                        {formatTime(comment.timestamp)}
+                      </time>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => handleLikeComment(comment.id)}
+                    className={`comment-like-btn ${userLiked ? 'liked' : ''}`}
+                    title={userLiked ? 'Unlike this comment' : 'Like this comment'}
+                  >
+                    <ThumbUpIcon className="like-icon" />
+                    <span className="like-count">{comment.likes || 0}</span>
+                  </button>
                 </div>
-                <button
-                  onClick={() => handleLikeComment(comment.id)}
-                  className="comment-like-btn"
-                  title="Like this comment"
-                >
-                  <ThumbUpIcon className="like-icon" />
-                  <span className="like-count">{comment.likes || 0}</span>
-                </button>
-              </div>
-              
-              <div className="comment-content">
-                {comment.text}
-              </div>
-              
-              {comment.userId === userId && (
-                <div className="comment-badge">
-                  You
+                
+                <div className="comment-content">
+                  {comment.text}
                 </div>
-              )}
-            </div>
-          ))
+                
+                {comment.userId === dataService.getUserId() && (
+                  <div className="comment-badge">
+                    You
+                  </div>
+                )}
+              </div>
+            );
+          })
         ) : (
           <div className="no-comments">
             <p className="no-comments-text">

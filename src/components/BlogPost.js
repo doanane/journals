@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import blogPosts from '../data/blogPosts';
+import BackButton from './BackButton';
 import ReactionButtons from './ReactionButtons';
 import Comments from './Comments';
 import './BlogPost.css';
@@ -12,7 +13,6 @@ function BlogPost() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       const foundPost = blogPosts.find(p => p.id === parseInt(id));
       if (foundPost) {
@@ -40,6 +40,10 @@ function BlogPost() {
 
   return (
     <div className="blog-post-page">
+      <div className="post-navigation">
+        <BackButton />
+      </div>
+      
       <article className="post-container">
         <div className="post-header">
           <div className="post-meta">
