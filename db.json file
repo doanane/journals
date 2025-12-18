@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Dont be like Kojo",
+      "date": "2025-12-06",
+      "readTime": "4 min read",
+      "content": "...",
+      "tags": ["faith", "salvation", "bible", "pride"]
+    }
+  ],
+  "reactions": [
+    {
+      "id": 1,
+      "postId": 1,
+      "userId": "user_123",
+      "type": "like",
+      "createdAt": "2024-01-20T10:30:00Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "userId": "user_123",
+      "username": "John",
+      "text": "Great story!",
+      "likes": 5,
+      "createdAt": "2024-01-20T10:30:00Z"
+    }
+  ]
+}

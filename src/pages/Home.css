@@ -1,0 +1,71 @@
+.home {
+  min-height: 100vh;
+  background: var(--bg-color);
+}
+
+.home-header {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 1rem 2rem;
+  text-align: center;
+}
+
+.site-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.5px;
+}
+
+.site-subtitle {
+  color: var(--meta-color);
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.blog-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.no-results-text {
+  font-size: 1.2rem;
+  color: var(--meta-color);
+  margin-bottom: 1.5rem;
+}
+
+.clear-search-button {
+  padding: 0.75rem 2rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-search-button:hover {
+  background: var(--primary-dark);
+}
+
+.search-results-info {
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+  color: var(--meta-color);
+  font-size: 0.95rem;
+}
