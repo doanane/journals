@@ -1,14 +1,14 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const UserContext = createContext();
 
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  const [userId, setUserId] = useState(() => {
+  const [userId] = useState(() => {
     const saved = localStorage.getItem('userId');
     if (saved) return saved;
-    
+
     // Generate a unique user ID
     const newUserId = 'user_' + Math.random().toString(36).substr(2, 9);
     localStorage.setItem('userId', newUserId);

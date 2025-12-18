@@ -1,3 +1,4 @@
+/* src/components/ReactionButtons.css */
 .reactions-container {
   margin: 2rem 0;
   padding: 1.5rem;
@@ -68,11 +69,6 @@
   cursor: not-allowed;
 }
 
-.reaction-btn.active .reaction-count {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
 .reaction-emoji {
   font-size: 1.3rem;
 }
@@ -80,7 +76,6 @@
 .reaction-count {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-color);
 }
 
 .reactions-hint {

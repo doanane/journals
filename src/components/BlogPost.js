@@ -1,3 +1,4 @@
+// src/components/BlogPost.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';

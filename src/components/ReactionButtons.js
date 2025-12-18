@@ -1,35 +1,33 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { dataService } from '../services/dataService';
+// src/components/ReactionButtons.js
+import React, { useState, useEffect } from 'react';
+import { getReactions, setReaction, subscribeToReactions, getUserReaction } from '../services/firebase';
 import './ReactionButtons.css';
 
 function ReactionButtons({ postId }) {
-  const [reactions, setReactions] = useState(() => dataService.getReactions(postId));
+  const [reactions, setReactions] = useState({ like: 0, love: 0, smile: 0, think: 0, clap: 0 });
+  const [userReaction, setUserReaction] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [userReaction, setUserReaction] = useState(() => dataService.getUserReaction(postId));
-
-  
-  const updateReactionState = useCallback(() => {
-    console.log('Updating reaction state for post:', postId);
-    const currentReactions = dataService.getReactions(postId);
-    console.log('Current reactions:', currentReactions);
-    setReactions(currentReactions);
-    
-    const userReactionType = dataService.getUserReaction(postId);
-    console.log('User reaction:', userReactionType);
-    setUserReaction(userReactionType);
-  }, [postId]);
 
   useEffect(() => {
-    
-    updateReactionState();
-    
-    
-    const unsubscribe = dataService.subscribe(updateReactionState);
-    
-    return () => {
-      if (unsubscribe) unsubscribe();
+    // Load initial data
+    const loadData = async () => {
+      const [reactionsData, userReactionData] = await Promise.all([
+        getReactions(postId),
+        getUserReaction(postId)
+      ]);
+      setReactions(reactionsData);
+      setUserReaction(userReactionData);
     };
-  }, [updateReactionState]);
+
+    loadData();
+
+    // Subscribe to real-time updates
+    const unsubscribe = subscribeToReactions(postId, (newReactions) => {
+      setReactions(newReactions);
+    });
+
+    return unsubscribe;
+  }, [postId]);
 
   const reactionTypes = [
     { id: 'like', emoji: '👍', label: 'Like' },
@@ -43,36 +41,20 @@ function ReactionButtons({ postId }) {
     if (loading) return;
     
     setLoading(true);
-    console.log('Handling reaction:', reactionType, 'for post:', postId);
     
     try {
-      
-      const beforeReaction = { ...reactions };
-      const beforeUserReaction = userReaction;
-      
-      console.log('Before - Reactions:', beforeReaction, 'User reaction:', beforeUserReaction);
-      
-      
-      const updatedReactions = dataService.setReaction(postId, reactionType);
-      console.log('After - Updated reactions:', updatedReactions);
-      
+      const updatedReactions = await setReaction(postId, reactionType);
+      const newUserReaction = await getUserReaction(postId);
       
       setReactions(updatedReactions);
-      setUserReaction(dataService.getUserReaction(postId));
-      
-      
-      setTimeout(() => {
-        updateReactionState(); 
-      }, 100);
-      
+      setUserReaction(newUserReaction);
     } catch (error) {
       console.error('Error updating reaction:', error);
     } finally {
-      setTimeout(() => setLoading(false), 300); 
+      setLoading(false);
     }
   };
 
-  
   const totalReactions = Object.values(reactions).reduce((sum, count) => sum + count, 0);
 
   return (
@@ -81,7 +63,7 @@ function ReactionButtons({ postId }) {
         <div className="reactions-title">How did this story make you feel?</div>
         {totalReactions > 0 && (
           <div className="total-reactions">
-            {totalReactions} total reaction{totalReactions !== 1 ? 's' : ''}
+            {totalReactions} {totalReactions === 1 ? 'reaction' : 'reactions'}
           </div>
         )}
       </div>
@@ -96,9 +78,8 @@ function ReactionButtons({ postId }) {
               key={reaction.id}
               className={`reaction-btn ${isActive ? 'active' : ''} ${loading ? 'disabled' : ''}`}
               onClick={() => handleReaction(reaction.id)}
-              title={`${reaction.label} - ${count} ${count === 1 ? 'person' : 'people'}`}
-              aria-label={`${reaction.label} (${count})`}
               disabled={loading}
+              title={`${reaction.label} (${count})`}
             >
               <span className="reaction-emoji">{reaction.emoji}</span>
               <span className="reaction-count">{count}</span>
@@ -109,8 +90,8 @@ function ReactionButtons({ postId }) {
       
       <div className="reactions-hint">
         {userReaction 
-          ? `You reacted with "${userReaction}". Click to change or remove.` 
-          : 'Click an emoji to react. One reaction per story.'}
+          ? `You reacted with "${userReaction}"` 
+          : 'Click to add your reaction'}
       </div>
     </div>
   );
