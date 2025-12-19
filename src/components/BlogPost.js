@@ -1,12 +1,13 @@
 // src/components/BlogPost.js
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import blogPosts from '../data/blogPosts';
 import BackButton from './BackButton';
-import ReactionButtons from './ReactionButtons';
-import Comments from './Comments';
 import './BlogPost.css';
+import Comments from './Comments';
+import ReactionButtons from './ReactionButtons';
+import ShareButton from './ShareButton';
 
 function BlogPost() {
   const { id } = useParams();
@@ -44,7 +45,7 @@ function BlogPost() {
       <div className="post-navigation">
         <BackButton />
       </div>
-      
+
       <article className="post-container">
         <div className="post-header">
           <div className="post-meta">
@@ -54,8 +55,16 @@ function BlogPost() {
             <span className="post-read-time">• {post.readTime}</span>
           </div>
           <h1 className="post-title">{post.title}</h1>
+          <div className="post-actions">
+            <ShareButton
+              title={post.title}
+              text={`I just read this on Journals: ${post.title}`}
+              url={`${typeof window !== 'undefined' ? window.location.origin : ''}/post/${post.id}`}
+              className="post-share-btn"
+            />
+          </div>
         </div>
-        
+
         <div className="post-content">
           {post.content.split('\n\n').map((paragraph, index) => (
             <p key={index} className="content-paragraph">
@@ -63,15 +72,15 @@ function BlogPost() {
             </p>
           ))}
         </div>
-        
+
         <div className="post-tags">
           {post.tags.map(tag => (
             <span key={tag} className="post-tag">#{tag}</span>
           ))}
         </div>
-        
+
         <ReactionButtons postId={post.id} />
-        
+
         <Comments postId={post.id} />
       </article>
     </div>

@@ -66,7 +66,7 @@ Jesus is knocking at your door.`,
   },
   {
     id: 2,
-    title: 'Help Your Friends Help You',
+    title: 'Help Your Friends to Help You',
     date: '2025-12-12',
     readTime: '3 min read',
     content: `Your friends want to recommend you. But wanting to help and being able to help are two very different things.
@@ -86,28 +86,28 @@ Just as friends need guidance on how to help us, we need to approach God with fa
     },
     comments: []
   },
-  {
-    id: 3,
-    title: 'The Unseen Battle',
-    date: '2025-11-28',
-    readTime: '5 min read',
-    content: `Ephesians 6:12 reminds us: For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms.
+//   {
+//     id: 3,
+//     title: 'The Unseen Battle',
+//     date: '2025-11-28',
+//     readTime: '5 min read',
+//     content: `Ephesians 6:12 reminds us: For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms.
 
-Every day, we face battles that arent visible to the naked eye. The struggle for peace, the fight for joy, the war against doubt and fear. These are spiritual battles that require spiritual weapons.
+// Every day, we face battles that arent visible to the naked eye. The struggle for peace, the fight for joy, the war against doubt and fear. These are spiritual battles that require spiritual weapons.
 
-In my own life, Ive found that the moments of greatest growth came not from external successes, but from internal victories won on my knees in prayer. 
+// In my own life, Ive found that the moments of greatest growth came not from external successes, but from internal victories won on my knees in prayer. 
 
-The armor of God isnt just a metaphor—its a daily necessity for every believer navigating the challenges of modern life while maintaining a vibrant faith.`,
-    tags: ['spiritual warfare', 'ephesians', 'prayer', 'faith'],
-    reactions: {
-      like: 0,
-      love: 0,
-      smile: 0,
-      think: 0,
-      clap: 0
-    },
-    comments: []
-  }
+// The armor of God isnt just a metaphor—its a daily necessity for every believer navigating the challenges of modern life while maintaining a vibrant faith.`,
+//     tags: ['spiritual warfare', 'ephesians', 'prayer', 'faith'],
+//     reactions: {
+//       like: 0,
+//       love: 0,
+//       smile: 0,
+//       think: 0,
+//       clap: 0
+//     },
+//     comments: []
+//   }
 ];
 
 export default blogPosts;

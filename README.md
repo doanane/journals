@@ -1,71 +1,102 @@
-# Getting Started with Create React App
+# Journals — React + Firebase Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Journals is a simple, modern blog built with React and Firebase Realtime Database. It supports posts, reactions (👍 ❤️ 😊 🤔 👏), comments with per-user likes, search, and a light/dark theme toggle. The app uses client-side user IDs stored in `localStorage` to provide a lightweight, anonymous experience with per-user interactions.
 
-## Available Scripts
+**Highlights**
+- **Blog Posts:** Friendly cards and detailed views with images and metadata.
+- **Reactions:** Real-time reaction counts per post via [src/components/ReactionButtons.js](src/components/ReactionButtons.js).
+- **Comments:** Add comments, see timestamps, and like/unlike individual comments via [src/components/Comments.js](src/components/Comments.js).
+- **Search & Navigation:** Quick filtering and clean routing.
+- **Theme Toggle:** Switch between light and dark themes.
+- **Realtime Updates:** Subscriptions keep reaction and comment views in sync.
 
-In the project directory, you can run:
+## Tech Stack
+- **Frontend:** React (Create React App), CSS
+- **Backend:** Firebase Realtime Database
+- **Icons/UX:** MUI Icons (e.g., ThumbUp)
+- **Testing:** Jest + React Testing Library (CRA defaults)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Install dependencies:
+```bash
+npm install
+```
+2. Start the dev server:
+```bash
+npm start
+```
+3. If port 3000 is in use, CRA will prompt; choose “yes” to use another port.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Configuration
+- Firebase configuration is defined in [src/services/firebase.js](src/services/firebase.js).
+- The app uses a generated `blog_user_id` stored in `localStorage` for per-user actions via `getUserId()`.
 
-### `npm test`
+## Features & Data Model
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Reactions**
+- Stored under `reactions/{postId}` with keys: `like`, `love`, `smile`, `think`, `clap`.
+- Per-user mapping under `userReactions/{userId}/{postId}` storing the user’s current reaction.
+- APIs in [src/services/firebase.js](src/services/firebase.js):
+  - getReactions(postId): Fetch counts.
+  - setReaction(postId, reactionType): Add/change/remove a reaction with safe count updates.
+  - subscribeToReactions(postId, cb): Live updates.
+  - getUserReaction(postId): Current user’s selected reaction.
 
-### `npm run build`
+**Comments**
+- Stored under `comments/{postId}/{commentId}` with fields: `userId`, `username`, `text`, `timestamp`, `likes`, `likedBy`.
+- `likedBy` is a map `{ userId: true }` for users who liked a comment.
+- APIs in [src/services/firebase.js](src/services/firebase.js):
+  - getComments(postId): Read and sort by newest.
+  - addComment(postId, commentData): Create comment with `push()` key.
+  - subscribeToComments(postId, cb): Live updates.
+  - toggleCommentLike(postId, commentId): Increments/decrements `likes` and sets/removes `likedBy/{userId}`.
+  - hasUserLikedComment(postId, commentId): Checks if current user liked the comment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Key Components
+- [src/components/BlogList.js](src/components/BlogList.js): Post list view.
+- [src/components/BlogPost.js](src/components/BlogPost.js): Post detail layout.
+- [src/components/ReactionButtons.js](src/components/ReactionButtons.js): Reaction UI + logic.
+- [src/components/Comments.js](src/components/Comments.js): Comments UI + likes.
+- [src/components/SearchBar.js](src/components/SearchBar.js): Client-side search.
+- [src/components/ThemeToggle.js](src/components/ThemeToggle.js): Theme switcher.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running & Scripts
+- Development:
+```bash
+npm start
+```
+- Tests:
+```bash
+npm test
+```
+- Production build:
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Folder Structure
+Key files and directories:
+- [src/index.js](src/index.js) — App bootstrap
+- [src/App.js](src/App.js) — Top-level routes and layout
+- [src/services/firebase.js](src/services/firebase.js) — Data access and realtime subscriptions
+- [src/components/](src/components) — UI components (reactions, comments, header, footer, etc.)
+- [src/pages/](src/pages) — Page-level components
+- [src/data/blogPosts.js](src/data/blogPosts.js) — Sample/static post data
 
-### `npm run eject`
+## Troubleshooting
+- Port in use: CRA prompts to switch ports; choose “yes”.
+- Dev server warnings: Webpack dev server may log deprecation warnings; functionality is unaffected.
+- Firebase errors: Ensure internet connectivity; the Realtime Database rules allow reads/writes for your use case.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Security & Privacy
+- Firebase client keys are intended to be public in frontend apps; secure access via Realtime Database Rules.
+- User identity is anonymous and stored locally via `blog_user_id`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Roadmap / Ideas
+- Pagination for comments and posts.
+- Rich text for comments.
+- Post authoring and authentication.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# journals
+---
+Built with care for a simple, thoughtful reading and sharing experience.

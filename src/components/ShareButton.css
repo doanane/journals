@@ -1,0 +1,34 @@
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #0d6efd;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.share-btn:hover {
+    background: #0b5ed7;
+}
+
+.share-btn.disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.share-btn.copied {
+    background: #0b5ed7;
+    border-color: #b2e6b2;
+}
+
+.share-icon {
+    font-size: 16px;
+}
+
+.share-label {
+    font-weight: 600;
+}
