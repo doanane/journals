@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { dataService } from '../services/dataService';
+import { getComments, subscribeToComments } from '../services/firebase';
 import './BlogCard.css';
 import ReactionButtons from './ReactionButtons';
 import ShareButton from './ShareButton';
@@ -10,8 +10,24 @@ function BlogCard({ post }) {
   const [commentCount, setCommentCount] = React.useState(0);
 
   useEffect(() => {
-    const comments = dataService.getComments(post.id);
-    setCommentCount(comments.length);
+    const loadCommentCount = async () => {
+      try {
+        const comments = await getComments(post.id);
+        setCommentCount(comments.length);
+      } catch (error) {
+        console.error('Error loading comment count:', error);
+        setCommentCount(0);
+      }
+    };
+
+    loadCommentCount();
+
+    // Subscribe to real-time comment updates
+    const unsubscribe = subscribeToComments(post.id, (comments) => {
+      setCommentCount(comments.length);
+    });
+
+    return unsubscribe;
   }, [post.id]);
 
   return (
