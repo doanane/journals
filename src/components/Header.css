@@ -19,12 +19,14 @@
 .logo {
   text-decoration: none;
   color: #333;
+  display: flex;
+  align-items: center;
 }
 
-.logo h1 {
-  font-size: 1.5rem;
-  margin: 0;
-  font-weight: 700;
+.logo-image {
+  height: 40px;
+  object-fit: contain;
+  max-width: 200px;
 }
 
 .nav {
