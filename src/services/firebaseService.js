@@ -1,8 +1,8 @@
-// src/services/firebaseService.js
+
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, update, onValue, push } from 'firebase/database';
 
-// Your Firebase config from console
+
 const firebaseConfig = {
   apiKey: "AIzaSyC0ALhw54lK_mcUvbM7X4r5yIUJUIOFIqI",
   authDomain: "myblog-35200.firebaseapp.com",
@@ -14,7 +14,7 @@ const firebaseConfig = {
   measurementId: "G-VBWDYTTSVJ"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
@@ -33,7 +33,7 @@ class FirebaseService {
     return userId;
   }
 
-  // REACTIONS
+  
   async getReactions(postId) {
     try {
       const snapshot = await get(ref(database, 'reactions/' + postId));
@@ -64,16 +64,16 @@ class FirebaseService {
       const updates = {};
       
       if (currentReaction === reactionType) {
-        // Remove reaction
+        
         updates[`reactions/${postId}/${reactionType}`] = Math.max(0, (currentReactions[reactionType] || 0) - 1);
         updates[`userReactions/${this.userId}/${postId}`] = null;
       } else if (currentReaction) {
-        // Change reaction
+        
         updates[`reactions/${postId}/${currentReaction}`] = Math.max(0, (currentReactions[currentReaction] || 0) - 1);
         updates[`reactions/${postId}/${reactionType}`] = (currentReactions[reactionType] || 0) + 1;
         updates[`userReactions/${this.userId}/${postId}`] = reactionType;
       } else {
-        // Add new reaction
+        
         updates[`reactions/${postId}/${reactionType}`] = (currentReactions[reactionType] || 0) + 1;
         updates[`userReactions/${this.userId}/${postId}`] = reactionType;
       }
@@ -99,7 +99,7 @@ class FirebaseService {
     });
   }
 
-  // COMMENTS
+  
   async getComments(postId) {
     try {
       const snapshot = await get(ref(database, 'comments/' + postId));
