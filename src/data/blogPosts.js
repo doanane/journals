@@ -2,7 +2,7 @@
 const blogPosts = [
   {
     id: 1,
-    title: 'Dont be like Kojo',
+    title: "Don't be like Kojo",
     date: '2025-12-06',
     readTime: '4 min read',
     content: `A king so hated crime that he made a decree. Whoever commits a crime will pay a hefty fine. A fine greater than a lifetimes wages or be killed.
