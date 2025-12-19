@@ -1,4 +1,4 @@
-
+/* src/components/Comments.css - UPDATED */
 .comments-section {
   margin-top: 3rem;
   padding-top: 2rem;
@@ -262,7 +262,7 @@
   margin: 0;
 }
 
-
+/* Responsive */
 @media (max-width: 640px) {
   .comment-header {
     flex-direction: column;
@@ -284,67 +284,5 @@
   
   .comment-submit-btn {
     width: 100%;
-  }
-}
-
-
-
-.error-message {
-  background-color: #fff5f5;
-  border: 1px solid #fc8181;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  color: #c53030;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: slideIn 0.3s ease;
-}
-
-.error-close {
-  background: none;
-  border: none;
-  color: #c53030;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0 0.5rem;
-  line-height: 1;
-}
-
-.error-close:hover {
-  color: #9b2c2c;
-}
-
-.char-counter {
-  font-size: 0.85rem;
-  color: var(--meta-color);
-  text-align: right;
-  margin-top: 0.25rem;
-}
-
-.spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
-  margin-right: 8px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
