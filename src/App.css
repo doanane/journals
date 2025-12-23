@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+/* Add these font imports at the top */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Update the :root variables */
 :root {
   /* Light Theme */
   --bg-color: #f8f9fa;
   --card-bg: #ffffff;
   --text-color: #2d3748;
   --heading-color: #1a202c;
-  --story-text: #2d3748;
+  --story-text: #2d3748; /* Changed from story text color */
   --meta-color: #718096;
   --meta-light: #a0aec0;
   --border-color: #e2e8f0;
@@ -25,6 +21,12 @@
   --primary-light: #bee3f8;
   --skeleton-bg: #f1f5f9;
   --skeleton-shine: #e2e8f0;
+  
+  /* Font Variables */
+   --font-heading: 'Merriweather', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-story: 'Merriweather', Georgia, serif; /* CHANGED from Italianno */
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Mono', monospace;
 }
 
 [data-theme="dark"] {
@@ -47,63 +49,116 @@
   --skeleton-shine: #475569;
 }
 
+/* Base body styles */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: var(--font-body);
+  font-size: 16px;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-  min-height: 100vh;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--heading-color);
+  margin-bottom: 0.75em;
 }
 
-/* Theme Transition */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
-/* Italianno font for story content */
-.story-text {
-  font-family: 'Italianno', cursive !important;
-  font-size: 1.8rem !important;
-  line-height: 1.8 !important;
-  letter-spacing: 0.3px !important;
+h2 {
+  font-size: 2rem;
 }
 
-/* Responsive adjustments */
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Story content - Keep Italianno ONLY for story paragraphs */
+.story-content,
+.post-content .content-paragraph {
+  font-family: var(--font-story); /* Now uses Merriweather instead of Italianno */
+  font-size: 1.3rem; /* Slightly larger for readability */
+  line-height: 1.8;
+  color: var(--story-text);
+  letter-spacing: 0.1px; /* Reduced for better readability */
+  margin-bottom: 1.5rem;
+}
+
+/* But everything else uses readable fonts */
+.post-title,
+.card-title,
+.comments-title,
+.reactions-title,
+.site-title {
+  font-family: var(--font-heading);
+}
+
+/* Meta information */
+.post-meta,
+.card-meta,
+.comment-time,
+.comment-username,
+.reactions-hint,
+.comment-hint {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Buttons and inputs */
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+/* Code and pre blocks */
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Responsive font sizes */
 @media (max-width: 768px) {
-  .site-title {
-    font-size: 2.5rem;
+  body {
+    font-size: 15px;
   }
   
-  .blog-card,
-  .post-container {
-    padding: 1.5rem;
-  }
-  
-  .post-title {
+  h1 {
     font-size: 2rem;
   }
   
-  .post-content,
-  .story-content {
-    font-size: 1.6rem;
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .story-content,
+  .post-content .content-paragraph {
+    font-size: 1.7rem;
+    line-height: 1.7;
   }
 }
 
 @media (max-width: 480px) {
-  .site-title {
-    font-size: 2rem;
+  body {
+    font-size: 14px;
   }
   
-  .home-header {
-    padding: 3rem 1rem 1.5rem;
+  h1 {
+    font-size: 1.75rem;
   }
   
-  .post-content,
-  .story-content {
-    font-size: 1.4rem;
+  .story-content,
+  .post-content .content-paragraph {
+    font-size: 1.5rem;
+    line-height: 1.6;
   }
 }

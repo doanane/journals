@@ -1,3 +1,5 @@
+/* BlogCard.css - Updated for better readability */
+
 .blog-card {
   background: var(--card-bg);
   border-radius: 16px;
@@ -6,11 +8,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid var(--border-color);
-}
-
-.blog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .card-content {
@@ -22,8 +19,10 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--meta-color);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .card-date {
@@ -46,17 +45,32 @@
   font-weight: 700;
   margin: 0;
   color: var(--heading-color);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-heading);
   line-height: 1.3;
 }
 
+/* Story content preview - Italianno for story text only */
 .story-content {
-  font-family: 'Italianno', cursive;
-  font-size: 1.8rem;
-  line-height: 1.8;
+  font-family: var(--font-story); /* Now points to Merriweather */
+  font-size: 1.2rem; /* Smaller for card preview */
+  line-height: 1.7;
   color: var(--story-text);
   margin-bottom: 1.5rem;
-  letter-spacing: 0.3px;
+  letter-spacing: normal;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.read-more:hover {
+  text-decoration: underline;
 }
 
 .card-tags {
@@ -72,11 +86,44 @@
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
+  font-family: var(--font-body);
   transition: background-color 0.3s ease;
 }
 
 .card-tag:hover {
   background: var(--tag-hover);
+}
+
+.card-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  font-family: var(--font-body);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--meta-color);
+  font-size: 0.95rem;
+}
+
+.stat-icon {
+  font-size: 1.1rem;
+}
+
+.stat-count {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--meta-light);
 }
 
 .card-divider {
@@ -96,44 +143,4 @@
   color: var(--meta-light);
   font-size: 0.8rem;
   letter-spacing: 3px;
-}
-
-.read-more {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 1rem;
-}
-
-.read-more:hover {
-  text-decoration: underline;
-}
-
-.card-footer {
-  margin-top: 1rem;
-}
-
-.comments-preview {
-  margin-bottom: 1rem;
-}
-
-.comments-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--meta-color);
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  background: var(--input-bg);
-  border-radius: 20px;
-  transition: all 0.2s ease;
-}
-
-.comments-link:hover {
-  color: var(--primary-color);
-  background: var(--primary-light);
 }

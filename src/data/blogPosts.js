@@ -1,5 +1,100 @@
 // src/data/blogPosts.js
 const blogPosts = [
+
+    {
+    id: 4,
+title: 'The Bridge That Failed',
+date: '2025-12-23',
+readTime: '7 min read',
+content: `Life unfolded easily for Kwame, almost as though the world itself had agreed to cooperate with him. He was born into wealth, surrounded by comfort and expectation, and raised with the quiet confidence that success was not a question but a destination. At school, he excelled without strain, absorbing lessons quickly and outpacing his peers with ease. Teachers praised him, relatives bragged about him, and opportunities seemed to line up in anticipation of his arrival.
+
+By the time he graduated from university at the top of his class, Kwame had already begun imagining the shape of his future. Before thirty, he built a flourishing business rooted in foreign investments and global partnerships. Money flowed steadily, then rapidly. His bank account expanded, his reputation grew, and his name appeared in newspapers and business forums. Kwame believed he had constructed an unshakable bridge into the future, one built with intelligence, discipline, and relentless ambition.
+
+He married Adwoa, a brilliant and accomplished lawyer whose calm confidence matched his drive. Together, they had two children who filled their home with energy and laughter. Their house in East Legon was elegant and widely admired, featured in design magazines and praised for its tasteful luxury. Vacations took the family to Dubai, Paris, and New York, each trip carefully documented and remembered. Kwame donated generously to charities, sat on prestigious boards, and delivered motivational speeches where he spoke confidently about self effort, vision, and personal excellence.
+
+In his mind, success was proof of strength.
+
+Then life shifted its tone.
+
+The first crack appeared quietly. His eldest son fell ill, and after countless tests, doctors diagnosed a rare condition. Treatment was possible, but a cure was not. Kwame paid every bill without hesitation, yet for the first time, money felt inadequate. It could purchase care, but not certainty. Beneath his confidence, fear began to take root.
+
+Soon after, global markets changed direction. Foreign investors withdrew without warning. Contracts dissolved. Within six months, Kwame’s business began to collapse. Loans were called in. Assets were seized. Partners disappeared. Friends who once welcomed his presence no longer returned his calls. Newspapers that had praised his rise now dissected his fall with quiet distance.
+
+The bridge he trusted began to crumble.
+
+One Thursday evening, Kwame sat alone in his car outside the hospital. The engine idled as unpaid medical bills lay scattered across the passenger seat. His phone remained silent. For the first time in his life, he had no solution, no backup plan, no clever strategy left to deploy. The man who believed he could fix anything realized he could fix nothing.
+
+Without thinking, he began to drive. When he finally stopped, he found himself outside the modest home of Yaw, a childhood friend who had chosen a simple life as a primary school teacher. Yaw had never chased wealth or recognition and had remained in their old neighborhood long after others had moved on.
+
+Yaw opened the door and studied Kwame’s face.
+
+Yaw: Come in.
+
+They sat in a small living room filled with warmth rather than luxury. Family photographs lined the walls, telling quiet stories of ordinary joy. A worn book rested on the table. The furniture was simple, marked by years of use and care.
+
+Kwame spoke for a long time. He talked about the collapse of his business, the debts, the isolation, and the terror of watching his child suffer. Words he had never spoken aloud finally escaped him. When he finished, his shoulders sagged with exhaustion.
+
+Yaw listened without interruption.
+
+Yaw: Tell me something, my friend. What did you build your life on.
+
+Kwame frowned, confused.
+
+Kwame: I do not understand.
+
+Yaw leaned forward gently.
+
+Yaw: Your life was impressive, but what was holding it up. What was your foundation.
+
+Kwame hesitated before answering.
+
+Kwame: My intelligence. My discipline. My connections. Those things always worked before.
+
+Yaw nodded slowly.
+
+Yaw: They worked until they did not.
+
+Yaw picked up the book from the table.
+
+Yaw: There is a story here about two builders. One chose easy ground because it was convenient. The other dug deep until he reached rock. When the storm came, only one house remained standing. Storms always come.
+
+Kwame said nothing. The truth settled heavily in his chest.
+
+From that night onward, Kwame visited Yaw every Thursday. Not for business advice, but for understanding. Slowly, he began rebuilding, not an empire, but a life. He accepted a modest job. He apologized to people he had overlooked or hurt. He sat beside his son during treatments, telling stories instead of checking emails. He discovered gratitude in small things, shared meals, quiet laughter, and ordinary mornings.
+
+The medical bills remained, but they no longer felt like chains. The business was not resurrected, but Kwame found purpose in mentoring young entrepreneurs without charging them. The house in East Legon was sold, and the smaller home they rented felt warmer than the mansion ever had.
+
+One year later, Kwame stood beside Yaw watching workers repair a neighborhood bridge. They drilled deep into the earth, far beyond the soft soil, anchoring the structure firmly into bedrock.
+
+Kwame: I used to think asking for help was weakness. I thought strong people built everything alone.
+
+Yaw smiled.
+
+Yaw: And now.
+
+Kwame: Now I know we are all building something. What matters is what we are standing on.
+
+He watched the concrete being poured.
+
+Kwame: I built upward without checking below. When the storm came, nothing held me down.
+
+Kwame’s life never returned to its former image of success. But something steadier replaced it. Peace that did not depend on money. Joy that did not vanish with applause. Strength rooted in trust rather than control.
+
+The broken bridge became his greatest lesson.
+
+Today, when Kwame speaks about success, he talks about helping his son with homework instead of closing deals. About laughter echoing through a small living room. About a friend who opened a door when everything else closed.
+
+He learned that the strongest bridges are not those that never break, but those that guide us to solid ground when everything else is being washed away. And that foundation, unseen and uncelebrated, had always been there, waiting patiently for him to finally stand on it.`,
+    tags: ['faith', 'rebuilding', 'foundation', 'grace', 'humility'],
+    reactions: {
+      like: 0,
+      love: 0,
+      smile: 0,
+      think: 0,
+      clap: 0
+    },
+    comments: []
+  },
   {
     id: 1,
     title: "Don't be like Kojo",
@@ -86,6 +181,8 @@ Just as friends need guidance on how to help us, we need to approach God with fa
     },
     comments: []
   },
+
+  
 //   {
 //     id: 3,
 //     title: 'The Unseen Battle',
