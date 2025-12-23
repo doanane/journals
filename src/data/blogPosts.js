@@ -84,7 +84,7 @@ The broken bridge became his greatest lesson.
 
 Today, when Kwame speaks about success, he talks about helping his son with homework instead of closing deals. About laughter echoing through a small living room. About a friend who opened a door when everything else closed.
 
-He learned that the strongest bridges are not those that never break, but those that guide us to solid ground when everything else is being washed away. And that foundation, unseen and uncelebrated, had always been there, waiting patiently for him to finally stand on it.`,
+In the end, Kwame learned that no matter how strong, smart, or wealthy we are, life’s storms reveal what we truly rely on. His bridge had seemed unshakable, yet it collapsed because it was built on sand. God, however, is the unmovable rock beneath all storms. When Kwame shifted his trust from himself to God, he discovered a foundation that could never fail. True strength and peace come not from what we build with our hands, but from standing firmly on God’s promises.`,
     tags: ['faith', 'rebuilding', 'foundation', 'grace', 'humility'],
     reactions: {
       like: 0,
