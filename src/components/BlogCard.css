@@ -144,3 +144,33 @@
   font-size: 0.8rem;
   letter-spacing: 3px;
 }
+
+@media (max-width: 768px) {
+  .blog-card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .story-content {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-card {
+    padding: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .card-stats {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
