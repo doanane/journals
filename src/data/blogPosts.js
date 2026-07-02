@@ -5,91 +5,92 @@ const blogPosts = [
     id: 5,
     title: 'Friendship as a Service',
     date: '2026-07-02',
-    readTime: '7 min read',
-    content: `Nobody tells you this early enough, in this generation, if people find out you are useful, you will never be lonely, you will only be busy. Your phone will ring. Your messages will multiply. But somewhere between the tenth favor and the tenth excuse, you will ask yourself a very quiet, very painful question: is this friendship, or is this just an API I forgot I built?
+    readTime: '5 min read',
+    content: `In this generation, friendship has quietly changed shape. The moment people discover someone is useful, they stop needing to know that person, they only need to be able to call them. But somewhere between the tenth favor and the tenth excuse, something quiet and uncomfortable starts to show through the cracks.
 
-
-Efua could design a wedding flyer in an hour, fix a frozen laptop before breakfast, and format a CV that got you shortlisted by evening. Working from a small rented room in Adenta, she had become something like a human service: always available, always responsive, always free of charge because, after all, "we are friends."
+Efua could design a wedding flyer in an hour, fix a frozen laptop before breakfast, and format a CV that got you shortlisted by evening. Working from a small rented room in Adenta, she had become something like a human service: always available, always free of charge, because after all, "we are friends."
 
 Kobby: Efuaaa. I need a logo for my new business. Deadline is tomorrow morning oo. Only you fit save me.
 
 Efua: Send the details, I got you.
 
-Abena: Sis, edit my CV small before 6pm. HR is calling me tomorrow for interview.
+Days later it was Nana Yaw's laptop, then someone else's CV. Always the same line: "Only you fit help me." Never once: "Efua, how are you sleeping these days? How is your mother's blood pressure? How is your own heart?"
 
-Efua: On it.
+She wrote it in her journal one night, half joking: "My friendships have become Software as a Service. People subscribe when they need a feature and log off the moment there's nothing to request. Is this even friendship, or just an API I forgot I built?" She laughed at her own joke, not knowing how soon it would stop being funny.
 
-Nana Yaw: My system has refused to open since morning. Come check am when you close.
+Then December came. Her mother collapsed at home, blood pressure dangerously high. Efua rode with her to Korle-Bu in a taxi, and by 1a.m. she sat alone on a hard plastic chair under a fluorescent light that made the whole corridor look half-dead.
 
-Efua: Okay, I'll pass by.
+Out of habit, she opened the group chat she was usually the one giving to and typed: "Please pray for my mother. She's on admission. I'm scared." It showed "seen" within a minute. Then silence. A few cheap replies trickled in hours later. Nobody came.
 
-Three requests in one week. Three favors delivered free of charge and full of love. But in all three conversations, not one person asked, "Efua, how are you sleeping these days? How is your mother's blood pressure? How is your own heart?" Not one.
+This is what being left out does to a person. It made Efua check her phone every few minutes for a reply that never came. It made her replay her own words, wondering if she had sounded too needy. It made her count, quietly and shamefully, every favor she had given, as if love were a ledger. Loneliness in a crowd of contacts is still loneliness.
 
-She noticed the pattern and wrote it down one night in her journal, half joking: "My friendships have become Software as a Service. People subscribe to me when they need a feature. Nobody stays logged in when there is nothing to request. The moment my usefulness goes idle, so does the relationship." She underlined it twice and laughed at her own joke. She had no idea how soon it would stop being funny.
+They call when they need you, forget when you bleed,
+show up for the harvest, not the planting of the seed.
+Your name in their phone, saved like a subscription plan,
+renewed the moment they need something only you can.
+Loud in the good times, first to like and to cheer,
+silent as a grave the one time you needed them near.
 
-Then December came, carrying an emergency with no invoice and no deadline she could control. Her mother collapsed at home. Blood pressure, the doctors said, dangerously high. Efua rode with her in a taxi to Korle-Bu, holding her mother's hand through every pothole, and by 1a.m. she was alone on a hard plastic chair under a fluorescent light that made everyone in the corridor look half-dead.
+Not all friendship is like this. Efua had tasted the other kind too: the friend who shows up unannounced because your voice sounded low on the phone, who gives without needing to be asked. Good friendship works like good software: loosely coupled, two people whole on their own, neither one carrying the whole weight alone. The moment it depends on one person, it is already breaking.
 
-Out of habit, she opened the group chat she was usually the one giving to, and typed: "Please pray for my mother. She's on admission. I'm scared."
+That night in the corridor, Efua stopped waiting for the group chat and opened her grandmother's worn Bible instead.
 
-The message showed "seen" within a minute. Then silence. Then, much later, replies that cost nothing: "Ah sorry oo, will pray 🙏." "Wishing her quick recovery." One person did not reply until the next afternoon. Nobody came.
+Efua: Lord, do You also need an invoice before You show up?
 
-This is what being left out does to a person. It makes you check your phone every few minutes for a reply that is not coming. It makes you reread your own message, wondering if you sounded too needy, too dramatic, too much. It makes you scroll past their pictures together, the outing you were not invited to, the group photo where your absence is not even noticed, and wonder what is wrong with you. It makes you count, quietly and shamefully, every favor you have ever given, as if love were a ledger. It makes you doubt whether you were ever truly a friend, or just a function they called whenever their own systems failed. It makes you tired of being the one who always starts the conversation, remembers the birthday, shows up first, while your own birthday passes with three cold texts and nothing more. Loneliness in a crowd of contacts is still loneliness. Sometimes it is the loudest kind.
+Her hand fell on a verse her grandmother had underlined decades earlier.
 
-Not all friendship is like this, and it would be dishonest to say so. Efua had tasted the other kind too: the friend who calls just to ask how you are, really, the friend who shows up unannounced with waakye because your voice sounded low on the phone, the friend who does not need a reason to stay. Good friendship, she would later write, works like good software architecture. It is loosely coupled. Two people, each strong and whole on their own, connected by choice and not by dependency, each able to give without waiting to be asked, neither one carrying the whole weight of the connection alone. The moment a friendship depends entirely on one person's effort, one person's memory, one person's calendar, it is already breaking, whether or not anyone has noticed the cracks yet.
-
-That night in the corridor, Efua stopped waiting for the group chat. For the first time in a long time, she opened her grandmother's worn Bible instead of her phone.
-
-Efua: Lord, do You also need an invoice before You show up? Because everyone else seems to.
-
-She was not expecting an answer. But her hand, almost on its own, turned to Proverbs, and her eyes fell on a verse her grandmother had underlined decades earlier in faded blue ink. Proverbs 18:24: "One who has unreliable friends soon comes to ruin, but there is a friend who sticks closer than a brother."
+Proverbs 18:24: "One who has unreliable friends soon comes to ruin, but there is a friend who sticks closer than a brother."
 
 Efua: Then be that friend tonight. I have run out of people to call.
 
-She turned further and found another underlined verse. Hebrews 13:5: "Never will I leave you; never will I forsake you."
+She turned further and found another underlined verse.
 
-Efua: Even now? Even when I have nothing to offer You? No favor to return, no logo to design, no CV to edit?
+Hebrews 13:5: "Never will I leave you; never will I forsake you."
 
-She kept reading, and the words seemed to sit down beside her on the hard plastic chair. Matthew 11:28: "Come to me, all you who are weary and burdened, and I will give you rest."
+Efua: Even now, when I have nothing to give back?
+
+She kept reading.
+
+Matthew 11:28: "Come to me, all you who are weary and burdened, and I will give you rest."
 
 Efua: I am weary, Lord. I am so weary.
 
-By dawn, the doctor came out with news that her mother's blood pressure had settled and she would live. Efua wept, not only from relief, but from a strange discovery. She had not spent that night alone after all. Somebody had sat with her the whole time. He just never needed to be added to a group chat to show up.
+By dawn, the doctor said her mother's blood pressure had settled. She would live. Efua wept, not only from relief but from a strange discovery: she had not spent that night alone. Somebody had sat with her the whole time. He never needed to be added to a group chat to show up.
 
 Weeks later, it was Kobby who called. Not for a logo this time.
 
-Kobby: Efua... I don't know who else to call. My business partner ran with the company's money. The bank is threatening to seize my equipment. I haven't told anyone. I don't know what to do.
+Kobby: Efua... I don't know who else to call. My business partner ran with the company's money. The bank wants to seize my equipment. I haven't told anyone.
 
-The old Efua would have remembered the silence in that corridor and felt the sharp temptation to say, "Now you remember me." The new Efua, the one who had been sat with by a Friend she could not see but could no longer deny, chose differently.
+The old Efua would have thought, now you remember me. The new Efua chose differently.
 
 Efua: I'm coming. Where are you?
 
-She found him at his shop, staring at a laptop that had nothing left to say to him. He looked smaller than she remembered.
+She found him at his shop, staring at a laptop that had nothing left to say to him.
 
-Kobby: I know I only ever called you when I needed something. I'm sorry. I don't even know why I called you now.
+Kobby: I know I only ever called you when I needed something. I'm sorry.
 
-Efua: I forgive you, Kobby. Honestly. I was angry for a while, but somebody taught me something in a hospital corridor at 1a.m.: a friend isn't measured by what he gives you, but by whether he stays when there's nothing to gain. I had almost given up on friendship. Then I met the one Friend who was never too busy for me.
+Efua: I forgive you. Somebody taught me in a hospital corridor at 1a.m. that a friend isn't measured by what he gives, but by whether he stays when there's nothing to gain. I found the one Friend who was never too busy for me.
 
 Kobby: Who?
 
-Efua: Jesus. I know how that sounds. But Proverbs says there's a friend who sticks closer than a brother. That's Him. Not just on Sundays, not just when you're doing well. He checks on you in the ward, in the debt, in the shame, all of it.
+Efua: Jesus. Proverbs says there's a friend who sticks closer than a brother. Not just on Sundays. He checks on you in the ward, in the debt, in the shame, all of it.
 
-Kobby: I don't do church things, Efua. Church has never made sense to me.
+Kobby was quiet for a long time, his hands still on the dead laptop. Then:
 
-Efua: This isn't church. This is one friend introducing another. You don't need a building. You need a conversation. He's listening right now, actually.
+Kobby: Jesus... I have nothing to offer You. My business is gone, my name is probably ruined. But if Efua is right, that You don't need an invoice, then here I am. Save me the way You saved her that night. I need a friend that does not disappear.
 
-Kobby was quiet for a long time, his hands still resting on the dead laptop.
+Something visibly left Kobby's shoulders, a weight he had carried alone for weeks, set down at last in front of Someone who was not going to leave him holding it.
 
-Kobby: What do I even say to Him?
+Efua's phone did not stop ringing after that night. People still called her for logos, CVs, laptops. But one thing had changed for good: she no longer needed those calls to feel valuable. She had found a Friend who valued her long before she was ever useful to anyone.
 
-Efua: Just tell Him the truth. He already knows it. He only wants you to stop carrying it alone.
+None of this means every friendship deserves to be thrown away. Some friends are simply human: forgetful, distracted, still learning how to show up. Kobby proved that. The lesson was never to walk away from everyone who let you down, but to stop expecting any one person to carry what only Jesus was built to carry.
 
-Kobby: Jesus... I don't know how to do this. I have nothing to offer You either. My business is gone, my name is probably ruined. But if what Efua says is true, that You don't need an invoice, then here I am. Save me the way You saved her that night. I need a friend that does not disappear.
+If your friendships often feel one-sided, if you are always the one calling, remembering, forgiving, know that you are not too much. Friendship was never meant to be carried alone. But there is a Friend whose love does not run on your usefulness, who does not need a request to check on you. His name is Jesus, and Proverbs 18:24 has been true about Him longer than software has existed. He sticks closer than a brother.
 
-Nobody said anything for a while after that. But something visibly left Kobby's shoulders, a weight he had been carrying alone for weeks, set down at last in front of Someone who was not going to leave him holding it.
-
-Efua's phone did not stop ringing after that night. People still called her for logos, still asked for CVs, still needed laptops fixed. But one thing had changed for good. She no longer needed those calls to feel valuable, because she had found a Friend who valued her long before she was ever useful to anyone.
-
-If your friendships often feel one-sided, if you are always the one calling, remembering, showing up, forgiving, know that you are not alone and you are not too much. Friendship was never meant to be carried by one person. When it is, it was never truly friendship, only a service agreement waiting to expire. But there is a Friend whose love does not run on your usefulness, whose uptime has never once failed in the history of the world, who does not require a request to check on you. His name is Jesus, and Proverbs 18:24 has been true about Him longer than software has existed. He sticks closer than a brother.
+Every good friend may fade, every good friend may fall,
+but Jesus never logs off, He's not that kind at all.
+No invoice in His love, no bill and no delay,
+He was already saving you before you learned to pray.
 
 Call on Him today. Not because He needs anything from you. Because, unlike everyone else you have called, He will actually pick up.`,
     tags: ['friendship', 'loyalty', 'loneliness', 'jesus', 'faith'],
