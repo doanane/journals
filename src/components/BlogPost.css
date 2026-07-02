@@ -58,6 +58,38 @@
   margin-bottom: 0;
 }
 
+/* Bars: rhyming punchline stanzas embedded in a story's content.
+   BlogPost.js flags any paragraph containing a line break with this class. */
+.content-bars {
+  white-space: pre-line;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+}
+
+/* Bible verses: BlogPost.js flags "Book Chapter:Verse: "quote"" paragraphs
+   with this class so the reference and text are easy to spot and read. */
+.content-verse {
+  background: var(--tag-bg);
+  border-left: 3px solid var(--heading-color);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.content-verse strong {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  color: var(--primary-color);
+  font-style: normal;
+  font-weight: 700;
+}
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -135,13 +167,22 @@
   .post-container {
     padding: 1.5rem;
   }
-  
+
   .post-title {
     font-size: 2rem;
   }
-  
+
   .content-paragraph {
-    font-size: 1.6rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .content-bars {
+    padding-left: 1rem;
+  }
+
+  .content-verse {
+    padding: 0.9rem 1.1rem;
   }
 }
 
@@ -149,16 +190,27 @@
   .blog-post-page {
     padding: 0.5rem 0.5rem 2rem;
   }
-  
+
   .post-container {
     padding: 1.25rem;
   }
-  
+
   .post-title {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
-  
+
   .content-paragraph {
-    font-size: 1.4rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .content-bars {
+    padding-left: 0.85rem;
+    margin: 1.5rem 0;
+  }
+
+  .content-verse {
+    padding: 0.8rem 1rem;
+    margin: 1.25rem 0;
   }
 }
