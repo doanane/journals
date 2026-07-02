@@ -9,6 +9,42 @@ import Comments from './Comments';
 import ReactionButtons from './ReactionButtons';
 import ShareButton from './ShareButton';
 
+const DIALOGUE_LINE = /^([A-Z][A-Za-zÀ-ÿ'’.]*(?:\s[A-Z][A-Za-zÀ-ÿ'’.]*){0,2}):\s(.*)$/s;
+const VERSE_LINE = /^((?:[1-3]\s)?[A-Z][a-zA-Z]+)\s(\d+:\d+):\s"(.+)"$/s;
+
+function getParagraphClassName(paragraph) {
+  if (paragraph.includes('\n')) {
+    return 'content-paragraph content-bars';
+  }
+  if (VERSE_LINE.test(paragraph)) {
+    return 'content-paragraph content-verse';
+  }
+  return 'content-paragraph';
+}
+
+function renderParagraph(paragraph) {
+  if (paragraph.includes('\n')) {
+    return paragraph;
+  }
+  const verseMatch = paragraph.match(VERSE_LINE);
+  if (verseMatch) {
+    return (
+      <>
+        <strong>{verseMatch[1]} {verseMatch[2]}</strong> — "{verseMatch[3]}"
+      </>
+    );
+  }
+  const dialogueMatch = paragraph.match(DIALOGUE_LINE);
+  if (!dialogueMatch) {
+    return paragraph;
+  }
+  return (
+    <>
+      <strong>{dialogueMatch[1]}:</strong> {dialogueMatch[2]}
+    </>
+  );
+}
+
 function BlogPost() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -67,8 +103,8 @@ function BlogPost() {
 
         <div className="post-content">
           {post.content.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="content-paragraph">
-              {paragraph}
+            <p key={index} className={getParagraphClassName(paragraph)}>
+              {renderParagraph(paragraph)}
             </p>
           ))}
         </div>
