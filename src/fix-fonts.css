@@ -1,15 +1,6 @@
-/* fix-fonts.css - Add this to your src folder */
-* {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
-}
-
-/* Override any Italianno font specifically */
-.story-content,
-.post-content .content-paragraph,
-[class*="story"],
-[class*="content"] {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
-  font-size: 1.2rem !important;
-  line-height: 1.7 !important;
-  letter-spacing: normal !important;
-}
+/* fix-fonts.css
+   No longer needed: --font-story and --font-heading in index.css already
+   point to Merriweather instead of Italianno, and this file's blanket
+   `* { !important }` rules were overriding the responsive font-size rules
+   in BlogPost.css / index.css on every screen size. Kept as an empty file
+   so nothing that still imports it breaks. */
