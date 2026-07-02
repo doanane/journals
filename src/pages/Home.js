@@ -10,30 +10,33 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFilteredPosts(blogPosts);
+      setFilteredPosts(sortedPosts);
       setIsLoading(false);
     }, 800);
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    
+
     if (!query.trim()) {
-      setFilteredPosts(blogPosts);
+      setFilteredPosts(sortedPosts);
       return;
     }
 
     const searchTerm = query.toLowerCase();
-    const filtered = blogPosts.filter(post => 
+    const filtered = sortedPosts.filter(post =>
       post.title.toLowerCase().includes(searchTerm) ||
       post.content.toLowerCase().includes(searchTerm) ||
       post.tags.some(tag => tag.toLowerCase().includes(searchTerm))
     );
-    
+
     setFilteredPosts(filtered);
   };
 
