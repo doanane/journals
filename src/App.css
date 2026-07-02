@@ -139,11 +139,10 @@ code, pre {
   h2 {
     font-size: 1.75rem;
   }
-  
-  .story-content,
-  .post-content .content-paragraph {
-    font-size: 1.7rem;
-    line-height: 1.7;
+
+  .story-content {
+    font-size: 1.1rem;
+    line-height: 1.65;
   }
 }
 
@@ -151,14 +150,13 @@ code, pre {
   body {
     font-size: 14px;
   }
-  
+
   h1 {
     font-size: 1.75rem;
   }
-  
-  .story-content,
-  .post-content .content-paragraph {
-    font-size: 1.5rem;
+
+  .story-content {
+    font-size: 1rem;
     line-height: 1.6;
   }
 }
