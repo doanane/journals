@@ -115,7 +115,7 @@ Call on Him today. Not because He needs anything from you. Because, unlike every
 
     In February, her father fell ill. What began as back pain became a diagnosis that emptied her savings account in three weeks. Ama watched her business fund become hospital bills, medication costs, and taxi fares to Korle-Bu Teaching Hospital. She sat by his bedside each evening after work, kneading dough in her mind while holding his hand.
 
-    March brought the rains early, and with them, floods that soaked the ground floor of her family home in Accra New Town. Mold crept up the walls where family photos hung. The smell of damp earth filled rooms that once held laughter. Ama salvaged what she could—her mother's wedding cloth, her childhood Bible with pressed flowers between Psalms—and moved what remained to her one-room apartment.
+    March brought the rains early, and with them, floods that soaked the ground floor of her family home in Accra New Town. Mold crept up the walls where family photos hung. The smell of damp earth filled rooms that once held laughter. Ama salvaged what she couldher mother's wedding cloth, her childhood Bible with pressed flowers between Psalmsand moved what remained to her one-room apartment.
 
     She worked double shifts at the office, took extra baking orders, slept four hours a night. Her friends noticed her fading smile. "This year will turn around," they assured her. Ama nodded but stopped believing in calendar-based miracles.
 
@@ -125,7 +125,7 @@ Call on Him today. Not because He needs anything from you. Because, unlike every
 
     Ama: God, where are You in this year. I have followed every rule, worked every hour, prayed every prayer. Why does everything keep breaking.
 
-    She expected silence. Instead, her phone lit up—a message from Auntie Yaa, her mother's oldest friend who lived in Kumasi.
+    She expected silence. Instead, her phone lit upa message from Auntie Yaa, her mother's oldest friend who lived in Kumasi.
 
     Auntie Yaa: I dreamed about you tonight. You were planting corn in dry season. Everyone said it wouldn't grow. But you kept watering the ground. Don't stop watering, Ama.
 
@@ -141,13 +141,13 @@ Call on Him today. Not because He needs anything from you. Because, unlike every
 
     Inside: exactly eighty cedis in small bills.
 
-    The celebration bread was a success. The client posted photos online. Orders began coming from people Ama didn't know—a funeral in Tema, a wedding in Cape Coast, a corporate event at Airport City. She and Kwaku worked through nights, their small oven glowing like a heartbeat in the dark apartment.
+    The celebration bread was a success. The client posted photos online. Orders began coming from people Ama didn't knowa funeral in Tema, a wedding in Cape Coast, a corporate event at Airport City. She and Kwaku worked through nights, their small oven glowing like a heartbeat in the dark apartment.
 
     In September, the office where Ama worked announced layoffs. Her name was on the list. Instead of despair, she felt strange relief. Now she could bake full-time.
 
     Kwaku, who had been quietly teaching himself graphic design on library computers, designed her logo: a rising sun over two hands holding bread. Simple. Powerful. They printed flyers and distributed them at churches and markets.
 
-    October tested them again. A major supplier doubled flour prices overnight. Ama calculated she would lose money on existing orders. That Sunday at church, she shared her struggle during prayer request time—something her pride would never have allowed a year before.
+    October tested them again. A major supplier doubled flour prices overnight. Ama calculated she would lose money on existing orders. That Sunday at church, she shared her struggle during prayer request timesomething her pride would never have allowed a year before.
 
     After service, Mr. Ofori, the quiet elderly man who always sat in back, approached her.
 
@@ -169,21 +169,21 @@ Call on Him today. Not because He needs anything from you. Because, unlike every
 
     Kwaku: Not just through. Look.
 
-    He pointed to their modest table where orders were stacked for the next day—more than they had ever received. Next to them sat a handmade sign: "Ama's Kitchen—Catering for All Occasions."
+    He pointed to their modest table where orders were stacked for the next daymore than they had ever received. Next to them sat a handmade sign: "Ama's KitchenCatering for All Occasions."
 
     The year had not given Ama what she wanted. It had given her what she needed: resilient faith, discovered family strength, community that appeared like manna in wilderness moments, and the profound understanding that God's calendar doesn't match ours but is always perfect.
 
-    On New Year's Eve, Ama opened her journal to a fresh page. She wrote: "2023—the year I learned roots grow deepest in drought. The year God didn't calm my storm but taught me to walk on waves. The year my broken plans made space for divine purpose."
+    On New Year's Eve, Ama opened her journal to a fresh page. She wrote: "2023the year I learned roots grow deepest in drought. The year God didn't calm my storm but taught me to walk on waves. The year my broken plans made space for divine purpose."
 
-    She remembered the story of Joseph—sold, imprisoned, forgotten, then raised to save nations. His journey to the palace went through the pit. Her journey to purpose went through flood, illness, loss, and darkness. Yet every time she stumbled, a hand steadied her—sometimes through Auntie Yaa's message, sometimes through Kwaku's recycled bottles, sometimes through Mr. Ofori's connection, sometimes through a child's smile over bread.
+    She remembered the story of Josephsold, imprisoned, forgotten, then raised to save nations. His journey to the palace went through the pit. Her journey to purpose went through flood, illness, loss, and darkness. Yet every time she stumbled, a hand steadied hersometimes through Auntie Yaa's message, sometimes through Kwaku's recycled bottles, sometimes through Mr. Ofori's connection, sometimes through a child's smile over bread.
 
     God hadn't abandoned her year. He had sanctified it.
 
-    As fireworks painted the Accra sky midnight, Ama whispered gratitude not for easy days but for presence that made hard days holy. Her business was still small, her apartment still cramped, her future still unclear. But her faith was no longer a fragile thing—it had been pressure-tested and proven solid.
+    As fireworks painted the Accra sky midnight, Ama whispered gratitude not for easy days but for presence that made hard days holy. Her business was still small, her apartment still cramped, her future still unclear. But her faith was no longer a fragile thingit had been pressure-tested and proven solid.
 
     The years that test us don't come to break us. They come to reveal what we're anchored to. Ama entered 2024 not with a list of demands but with open hands, ready to receive whatever God deemed necessary for her becoming.
 
-    Some years give us wings. Others give us roots. 2023 gave Ama roots that reached deep into God's faithfulness—roots that would now support whatever fruit 2024 would bring.`,
+    Some years give us wings. Others give us roots. 2023 gave Ama roots that reached deep into God's faithfulnessroots that would now support whatever fruit 2024 would bring.`,
     tags: ['newyear', 'faithfulness', 'perseverance', 'breakthrough', 'trust'],
     reactions: {
       like: 0,
@@ -388,7 +388,7 @@ Just as friends need guidance on how to help us, we need to approach God with fa
 
   // In my own life, Ive found that the moments of greatest growth came not from external successes, but from internal victories won on my knees in prayer. 
 
-  // The armor of God isnt just a metaphor—its a daily necessity for every believer navigating the challenges of modern life while maintaining a vibrant faith.`,
+  // The armor of God isnt just a metaphorits a daily necessity for every believer navigating the challenges of modern life while maintaining a vibrant faith.`,
   //     tags: ['spiritual warfare', 'ephesians', 'prayer', 'faith'],
   //     reactions: {
   //       like: 0,

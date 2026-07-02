@@ -30,7 +30,7 @@ function renderParagraph(paragraph) {
   if (verseMatch) {
     return (
       <>
-        <strong>{verseMatch[1]} {verseMatch[2]}</strong> — "{verseMatch[3]}"
+        <strong>{verseMatch[1]} {verseMatch[2]}</strong>  "{verseMatch[3]}"
       </>
     );
   }

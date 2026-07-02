@@ -1,4 +1,4 @@
-# Journals — React + Firebase Blog
+# Journals  React + Firebase Blog
 
 Journals is a simple, modern blog built with React and Firebase Realtime Database. It supports posts, reactions (👍 ❤️ 😊 🤔 👏), comments with per-user likes, search, and a light/dark theme toggle. The app uses client-side user IDs stored in `localStorage` to provide a lightweight, anonymous experience with per-user interactions.
 
@@ -77,12 +77,12 @@ npm run build
 
 ## Folder Structure
 Key files and directories:
-- [src/index.js](src/index.js) — App bootstrap
-- [src/App.js](src/App.js) — Top-level routes and layout
-- [src/services/firebase.js](src/services/firebase.js) — Data access and realtime subscriptions
-- [src/components/](src/components) — UI components (reactions, comments, header, footer, etc.)
-- [src/pages/](src/pages) — Page-level components
-- [src/data/blogPosts.js](src/data/blogPosts.js) — Sample/static post data
+- [src/index.js](src/index.js)  App bootstrap
+- [src/App.js](src/App.js)  Top-level routes and layout
+- [src/services/firebase.js](src/services/firebase.js)  Data access and realtime subscriptions
+- [src/components/](src/components)  UI components (reactions, comments, header, footer, etc.)
+- [src/pages/](src/pages)  Page-level components
+- [src/data/blogPosts.js](src/data/blogPosts.js)  Sample/static post data
 
 ## Troubleshooting
 - Port in use: CRA prompts to switch ports; choose “yes”.
