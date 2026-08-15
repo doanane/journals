@@ -2,6 +2,120 @@
 const blogPosts = [
 
   {
+    id: 6,
+    title: 'Running on Empty',
+    date: '2026-08-15',
+    readTime: '7 min read',
+    content: `Growing up young in this country today means being pulled at from every direction before you have even figured out who you are. There is the pressure to hustle before you have finished grieving your own delayed plans, the family quietly expecting you to become their breakthrough, the endless scroll that reminds you every morning who to survive and make money, who traveled, who is "winning" while you are still counting transport money. In the middle of all that noise, a lot of young people learn a dangerous shortcut to feeling valuable: showing up for everybody else, being the reliable one, the strong one, the one who never says he is tired. Nobody warns you early enough that being needed and being loved are not the same thing, or that you can spend years pouring into someone and still end up completely alone the one night you actually needed to be poured into.
+
+This is the story of a boy named Kwesi, and the year he finally understood the difference.
+
+Kwesi had always been the hardworking one. Through university, he worked two part-time jobs just to stay enrolled, retook a course twice because it is hard to concentrate on lectures when you are also hungry, and still graduated on time, hanging his certificate above his bed like proof that effort actually counted for something. He completed his National Service teaching mathematics at a school in Ashaiman, hoping it would open a door somewhere. It did not. Applications went out every week and came back empty, or did not come back at all. Six months of nothing became a year of nothing, and the certificate on the wall started to feel less like proof and more like a question he could not answer. But he kept on, because stopping had never once felt like an option he was allowed. To survive, and to keep sending something home to his mother and two younger siblings still in school, he started riding a Bolt motorbike across Accra from six in the morning until his body gave out most nights. He kept his own savings in an old Milo tin under his bed, and every time he added to it, he felt like a man building something, even if nobody around him could see it yet.
+
+He had known Selina since Form Two at Mfantsiman, when she sat two seats behind him and borrowed his class notes so often the teachers assumed they were dating. They never were, though Kwesi had wanted them to be for longer than he was willing to admit even to himself. They had both gone on to university, though on very different terms, her father paid every bill and arranged a comfortable office job through a family friend the month she graduated, while Kwesi worked nights to cover his own fees and was still riding a bike a year after his. Her Snapchat filled with office selfies, hall week throwbacks, and captions about "grateful for my real ones," his face sometimes appearing in the background of a story that vanished in twenty-four hours the same way his effort seemed to vanish every time he sent out another application. She called him her "guy," her "brother from another mother," the one person she trusted with everything except the truth of how much she was taking from him.
+
+Selina: Kwesi, I'm stuck at Achimota, my Bolt cancelled on me and it's almost 9pm. Please come.
+
+Kwesi: I'm on my way.
+
+He turned down two paying passengers to get to her. This was not new. He had learned her moods, her deadlines, her emergencies, the way a man learns the roads of a city he has ridden every day for years. Free rides home. Data bundles when her bundle finished mid-conversation with whichever boyfriend she was crying over that month. Money for hair, for makeup, for "just small small" that never seemed to stay small. Once, he took four hundred cedis from the Milo tin, three months of saving, to help her pay a landlord threatening to lock her room, and told himself it was fine, he would catch up.
+
+He never quite caught up.
+
+Psychologists have a name for what Kwesi was living inside of: an asymmetric friendship, one where the emotional labor, the giving, the showing up, all run in a single direction, while the other person receives it and calls it closeness. It rarely looks like abuse from the outside. It looks like loyalty. It looks like a "real one." That is exactly why it is so easy to stay inside it for years without noticing that only one person is actually holding the relationship up.
+
+Selina spoke about him to her friends with genuine affection; that much was real. "Kwesi is the realest guy I know," she would say. But affection was not the same as return. When her actual boyfriend, a man named Kelvin who treated her carelessly and often left her in tears, called her back after weeks of silence, she went running, and Kwesi drove her there too, swallowing something bitter and unnamed the whole ride.
+
+He wrote it once in the notes app on his phone, at 2am, unable to sleep: "I keep filling a tank that has a hole in it. I don't think she even knows the hole is there. Or maybe she does, and it doesn't cost her anything to let me keep pouring."
+
+In March, his mother collapsed at home with a fever that would not break. Kwesi spent the Milo tin savings, all of it, on hospital deposits and drugs, and sat outside the ward at Ridge Hospital past midnight, exhausted, frightened, alone. He texted Selina, the way he had shown up for her a hundred times before.
+
+Kwesi: My mother is on admission. I'm scared. Can you come, or just call me.
+
+The message showed "seen." Nothing came after it. Two hours later, a single reply arrived.
+
+Selina: Ah sorry oo, I'm out with Kelvin's friends, will call you tomorrow.
+
+Tomorrow did not come, not that week. Kwesi sat with the silence of his phone and understood, in the particular quiet of a hospital corridor at midnight, exactly how much of himself he had spent on someone who could not spare him ten minutes.
+
+They will call you strong for how much you can carry,
+never asking what it costs you to always be near.
+They will call it a bond, never once call it borrowed,
+fuel going out, and never once coming clear.
+You can hold up a whole friendship on your back for years,
+and still be the last one they think to hold up.
+
+His mother recovered slowly. One evening, while he sat by her bed watching her sleep, she opened her eyes and studied his face the way mothers do when they have known something for a long time and finally decide to say it.
+
+Maame Akua: Kwesi, that girl. Selina. How many times has she come to check on you the way you run for her?
+
+Kwesi: Mama, it's not like that. We're just close.
+
+Maame Akua: Close is not one direction, my son. A well only stays a well if water goes in as much as it comes out. Otherwise it is just a hole you keep pouring yourself into.
+
+Kwesi said nothing, because there was nothing true he could say against it.
+
+Maame Akua: Bring me my Bible. The small brown one, by the lamp.
+
+He placed it in her weak hands. She turned the pages slower than usual, but she knew exactly where she was going.
+
+Maame Akua: Proverbs 4:23. "Above all else, guard your heart, for everything you do flows from it." You cannot guard a heart you keep handing to someone who has never once asked how heavy it is to carry.
+
+Kwesi: I thought if I kept showing up, she would eventually see me. Really see me.
+
+Maame Akua: My son, some people will let you build them a whole house and still tell you they were only ever passing through. Read the other one I marked, Matthew, the fifth chapter.
+
+Kwesi found it, his hands unsteady.
+
+Matthew 5:37: "All you need to say is simply 'Yes' or 'No'; anything beyond this comes from the evil one."
+
+Maame Akua: You have never once told that girl no. Not because you couldn't. Because you were afraid of what would be left of the friendship if you did.
+
+Kwesi: And if there's nothing left?
+
+Maame Akua: Then you will finally know what was actually there to begin with.
+
+Two weeks later, Selina called, cheerful, as if a hospital corridor and an unanswered midnight text had never happened.
+
+Selina: Kwesi, I need you to run me to Kelvin's place this evening, and honestly, I could use a little something till Friday, things are tight.
+
+Kwesi: I can't.
+
+Selina: Since when do you have plans?
+
+Kwesi: Since I started asking myself why I'm always the one who has to have none.
+
+Selina: Wow, Kwesi. Okay. I see how it is now.
+
+Kwesi: I've been in your corner for six years, Selina. When my mother was on admission, I needed ten minutes of you. You gave me a "sorry oo" the next day. I'm not angry. I'm just done pretending that wasn't the truth of what this was.
+
+Selina: So all this because I was busy one night?
+
+Kwesi: No. Because it was never one night.
+
+She did not call again after that. The silence stung for a while, the particular sting of losing something even after you have finally understood it was never fully yours to lose. But it was a clean sting, not the slow bleeding kind he had grown used to.
+
+He started a new Milo tin. Slower this time, because he was also learning to spend a little on himself; a proper meal after a long shift, a shirt he actually liked, an evening with no one's emergency attached to it. At the shop where he serviced his bike, a mechanic's daughter named Adjoa, who had watched him for months without saying much, started saving him a plate of food on the evenings he came in late, without being asked and without expecting anything back. He noticed. It felt strange, at first, to receive something freely. He was still learning how.
+
+Some people top you up. Others only ever come to siphon. From the outside they can look identical, both calling you at odd hours, both texting "you're my person," both showing up in the caption of a birthday post once a year. You will rarely tell the difference by what they say. You will tell by what is still in your tank after years of knowing them.
+
+This is not only Kwesi's story. It is the story of every young person quietly holding up a job that does not pay enough, a family that leans on them before they have finished growing, a friendship or a situationship that takes and takes and calls it closeness, a phone full of other people's highlight reels while their own days feel like survival. If you are the one always showing up, always available, always explaining away the silence on the other end when it is finally your turn to be needed, hear this: you are not weak for wanting to be poured into as much as you pour. You are not selfish for saying no. Love, real love, was never meant to run only one way forever.
+
+And if you are sitting somewhere tonight the way Kwesi sat outside that ward, forgotten by the one person you thought would come, know that you were not actually alone in that corridor. Psalm 34:18 says the Lord is close to the brokenhearted and saves those who are crushed in spirit. He does not leave you on "seen." And 1 Corinthians 13 says real love is patient, real love does not seek its own, does not keep score, does not disappear the one time you need it. If what you have been calling love does not look like that, it may not be love you have been giving yourself away for. It may just be the loudest voice that showed up first.
+
+You do not have to keep pouring into a tank with a hole in it. Guard your heart. Let your yes be yes, and let your no, finally, be no.`,
+    tags: ['friendship', 'boundaries', 'youth', 'selfworth', 'faith'],
+    reactions: {
+      like: 0,
+      love: 0,
+      smile: 0,
+      think: 0,
+      clap: 0
+    },
+    comments: []
+  },
+
+  {
     id: 5,
     title: 'Friendship as a Service',
     date: '2026-07-02',
